@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eylülü çok seviyorum</title>
+    <style>
+        body {
+            background-color: #000;
+            margin: 0;
+            padding: 5px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 10px;
+            overflow-x: hidden;
+            color: white;
+        }
+
+        .line {
+            line-height: 1.1;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="terminal"></div>
+
+    <script>
+        window.onload = function() {
+            const terminal = document.getElementById('terminal');
+            if (!terminal) return;
+
+            let counter = 1;
+            const maxCount = 10000;
+
+            const colors = [
+                '#ff5f5f', '#ffbd2e', '#27c93f', '#ff7eb6', 
+                '#42a5f5', '#ae81ff', '#66d9ef'
+            ];
+
+            function startFlow() {
+                if (counter <= maxCount) {
+                    const div = document.createElement('div');
+                    div.className = 'line';
+                    div.style.color = colors[Math.floor(Math.random() * colors.length)];
+                    div.textContent = `${counter} - eylül 🤍 anti`;
+                    
+                    terminal.appendChild(div);
+
+                    // Sayfayı aşağı kaydırma işlemini daha kararlı yapar
+                    window.scrollTo({
+                        top: document.body.scrollHeight,
+                        behavior: 'auto'
+                    });
+                    
+                    counter++;
+                    requestAnimationFrame(startFlow);
+                }
+            }
+
+            // Akışı başlat
+            startFlow();
+        };
+    </script>
+</body>
+</html>
